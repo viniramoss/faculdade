@@ -10,6 +10,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         InterfaceUsuario interfaceUsuario = new InterfaceUsuario();
         ArrayList<Financiamento> financiamentos = new ArrayList<>();
+
+
+        financiamentos.add(new Financiamento(200000, 20, 10));
+        financiamentos.add(new Financiamento(150000, 15, 9.5));
+        financiamentos.add(new Financiamento(100000, 10, 8.5));
+
+//        aqui coloquei o codigo para adicionar pelo menos 3 finciamentos como default
+
+        for (Financiamento f : financiamentos) {
+            f.calcularPagamentoMensal();
+            f.calcularTotalDoPagamento();
+        }
+
         boolean adicionarOutro = true;
 
         while (adicionarOutro) {
@@ -25,18 +38,12 @@ public class Main {
 
             financiamentos.add(financiamento);
 
-            System.out.print("Deseja adicionar outro financiamento?  Digite s | n: ");
+            System.out.print("Deseja adicionar outro financiamento? Digite s | n: ");
             String resposta = scanner.next();
             adicionarOutro = resposta.equalsIgnoreCase("s");
         }
 
         System.out.println("\n--- Seus Financiamentos ---");
-/*
-        for (int i = 0; i < financiamentos.size(); i++) {
-            financiamentos.get(i).mostrarResultados();
-            System.out.println("---------------------");
-        }
-*/
         for (Financiamento financiamento : financiamentos) {
             financiamento.mostrarResultados();
             System.out.println("---------------------");
